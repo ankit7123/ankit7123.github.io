@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ankit Panchariya — Principal Security Engineer</title>
+<meta name="description" content="Ankit Panchariya — Principal Security Engineer specializing in AppSec, API Security, AI/LLM Security, DevSecOps, and Cloud Security.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D1117;
+    --bg-panel:#151B24;
+    --bg-panel-hover:#1A212C;
+    --line:#262E3B;
+    --line-bright:#3A4457;
+    --text:#E7E5DE;
+    --text-dim:#8B93A1;
+    --text-faint:#5B6472;
+    --amber:#D9A441;
+    --cyan:#4FB8AE;
+    --red:#C1554A;
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+    --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --max: 880px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* subtle grid texture */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 64px 64px;
+    opacity:0.06;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  a{color:var(--cyan); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--cyan);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px; position:relative; z-index:1;}
+
+  .mono{font-family:var(--mono);}
+  .dim{color:var(--text-dim);}
+  .faint{color:var(--text-faint);}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(13,17,23,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:var(--max); margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:var(--mono); font-size:13px;
+  }
+  .brand{color:var(--text); font-weight:600; letter-spacing:0.02em;}
+  .brand .dot{color:var(--cyan);}
+  .topnav{display:flex; gap:22px;}
+  .topnav a{color:var(--text-dim); font-size:12.5px;}
+  .topnav a:hover{color:var(--cyan); text-decoration:none;}
+  @media(max-width:640px){ .topnav{display:none;} }
+
+  /* ---------- hero ---------- */
+  .hero{padding:72px 0 56px; border-bottom:1px solid var(--line);}
+  .term{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 20px 60px -20px rgba(0,0,0,0.6);
+  }
+  .term-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:10px 14px;
+    border-bottom:1px solid var(--line);
+    background:#10151D;
+  }
+  .term-dot{width:10px; height:10px; border-radius:50%;}
+  .term-bar .t-red{background:#4A3A38;}
+  .term-bar .t-amber{background:#4A4130;}
+  .term-bar .t-green{background:#324A44;}
+  .term-title{margin-left:10px; font-family:var(--mono); font-size:12px; color:var(--text-faint);}
+  .term-body{padding:26px 28px 30px; font-family:var(--mono);}
+  .prompt-line{color:var(--text-dim); font-size:13.5px; margin-bottom:18px;}
+  .prompt-line .p-user{color:var(--cyan);}
+  .prompt-line .p-cursor{
+    display:inline-block; width:8px; height:14px; background:var(--amber);
+    margin-left:6px; vertical-align:-2px;
+    animation:blink 1.1s step-end infinite;
+  }
+  @keyframes blink{50%{opacity:0;}}
+
+  .hero-name{
+    font-family:var(--sans); font-weight:700;
+    font-size:clamp(34px,6vw,54px);
+    letter-spacing:-0.01em;
+    line-height:1.05;
+    margin-bottom:10px;
+  }
+  .hero-title{
+    font-family:var(--mono); font-size:14px;
+    color:var(--amber);
+    margin-bottom:20px;
+    line-height:1.7;
+  }
+  .hero-hook{
+    font-family:var(--sans); font-weight:600;
+    font-size:19px; line-height:1.4;
+    color:var(--text); max-width:600px;
+    margin-bottom:14px;
+  }
+  .hero-sum{
+    max-width:640px;
+    color:var(--text-dim);
+    font-size:15.5px;
+    margin-bottom:26px;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:10px 24px;
+    font-family:var(--mono); font-size:12.5px; color:var(--text-faint);
+    padding-top:18px; border-top:1px dashed var(--line);
+  }
+  .hero-meta span{display:flex; align-items:center; gap:6px;}
+  .hero-meta b{color:var(--text-dim); font-weight:500;}
+
+  .cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:24px;}
+  .btn{
+    font-family:var(--mono); font-size:13px; font-weight:500;
+    padding:11px 18px; border-radius:6px;
+    border:1px solid var(--line-bright);
+    display:inline-flex; align-items:center; gap:8px;
+    transition:all .15s ease;
+  }
+  .btn:hover{text-decoration:none;}
+  .btn-primary{background:var(--cyan); color:#0D1117; border-color:var(--cyan);}
+  .btn-primary:hover{background:#68C9C0;}
+  .btn-ghost{color:var(--text); background:transparent;}
+  .btn-ghost:hover{border-color:var(--cyan); color:var(--cyan);}
+
+  /* ---------- section scaffolding ---------- */
+  section{padding:56px 0; border-bottom:1px solid var(--line);}
+  .sec-head{
+    display:flex; align-items:baseline; gap:12px;
+    margin-bottom:28px;
+  }
+  .sec-tag{
+    font-family:var(--mono); font-size:11.5px; color:var(--amber);
+    letter-spacing:0.08em;
+  }
+  .sec-title{
+    font-family:var(--sans); font-weight:700; font-size:24px;
+    letter-spacing:-0.01em;
+  }
+  .sec-rule{flex:1; height:1px; background:var(--line);}
+
+  /* ---------- about ---------- */
+  .about-body{max-width:680px; color:var(--text-dim); font-size:15.5px;}
+  .about-body p{margin-bottom:14px;}
+  .about-body strong{color:var(--text); font-weight:600;}
+
+  /* ---------- metrics ---------- */
+  .metrics{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+  }
+  .metric{background:var(--bg-panel); padding:22px 18px;}
+  .metric-num{font-family:var(--mono); font-weight:700; font-size:26px; color:var(--cyan);}
+  .metric-label{font-size:12px; color:var(--text-faint); margin-top:6px; line-height:1.4;}
+  @media(max-width:700px){ .metrics{grid-template-columns:repeat(2,1fr);} }
+
+  /* ---------- focus areas ---------- */
+  .grid-cards{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
+  @media(max-width:700px){ .grid-cards{grid-template-columns:1fr;} }
+  .card{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:8px;
+    padding:20px 20px 18px; transition:border-color .15s ease, transform .15s ease;
+  }
+  .card:hover{border-color:var(--line-bright); transform:translateY(-2px);}
+  .card-tag{
+    font-family:var(--mono); font-size:10.5px; color:var(--amber);
+    letter-spacing:0.06em; margin-bottom:8px; display:block;
+  }
+  .card h3{font-size:16.5px; font-weight:600; margin-bottom:8px;}
+  .card p{font-size:13.5px; color:var(--text-dim);}
+
+  /* ---------- experience log ---------- */
+  .log{position:relative; padding-left:26px;}
+  .log::before{
+    content:""; position:absolute; left:5px; top:6px; bottom:6px;
+    width:1px; background:var(--line-bright);
+  }
+  .log-entry{position:relative; padding-bottom:38px;}
+  .log-entry:last-child{padding-bottom:0;}
+  .log-dot{
+    position:absolute; left:-26px; top:5px;
+    width:11px; height:11px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--cyan);
+  }
+  .log-entry.current .log-dot{background:var(--cyan); box-shadow:0 0 0 4px rgba(79,184,174,0.15);}
+  .log-ts{
+    font-family:var(--mono); font-size:11.5px; color:var(--text-faint);
+    letter-spacing:0.03em; margin-bottom:6px;
+  }
+  .log-ts .live{color:var(--cyan);}
+  .log-role{font-size:17px; font-weight:700; margin-bottom:2px;}
+  .log-org{
+    font-family:var(--mono); font-size:12.5px; color:var(--amber); margin-bottom:12px;
+  }
+  .log-org .loc{color:var(--text-faint); font-weight:400;}
+  .log-mission{
+    font-size:14.5px; color:var(--text); font-style:italic;
+    margin-bottom:14px; padding-left:2px;
+  }
+  .log-bullets{list-style:none;}
+  .log-bullets li{
+    position:relative; padding-left:18px; margin-bottom:8px;
+    font-size:14px; color:var(--text-dim); line-height:1.55;
+  }
+  .log-bullets li::before{
+    content:"▸"; position:absolute; left:0; top:0; color:var(--text-faint); font-size:12px;
+  }
+
+  /* ---------- achievement callout ---------- */
+  .callout{
+    background:linear-gradient(135deg, rgba(217,164,65,0.08), rgba(79,184,174,0.05));
+    border:1px solid var(--line-bright);
+    border-left:3px solid var(--amber);
+    border-radius:8px;
+    padding:22px 24px;
+    margin-top:32px;
+  }
+  .callout-tag{font-family:var(--mono); font-size:11px; color:var(--amber); letter-spacing:0.06em; margin-bottom:8px; display:block;}
+  .callout h4{font-size:16px; margin-bottom:6px;}
+  .callout p{font-size:13.5px; color:var(--text-dim);}
+
+  /* ---------- certs & skills ---------- */
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:36px;}
+  @media(max-width:700px){ .two-col{grid-template-columns:1fr;} }
+  .cert-list{list-style:none;}
+  .cert-list li{
+    padding:12px 0; border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .cert-list li:last-child{border-bottom:none;}
+  .cert-list .c-name{color:var(--text); font-weight:600;}
+  .cert-list .c-desc{color:var(--text-faint); font-size:12.5px; margin-top:2px;}
+
+  .skill-group{margin-bottom:18px;}
+  .skill-group:last-child{margin-bottom:0;}
+  .skill-group-name{
+    font-family:var(--mono); font-size:11.5px; color:var(--cyan);
+    letter-spacing:0.05em; margin-bottom:8px;
+  }
+  .tags{display:flex; flex-wrap:wrap; gap:6px;}
+  .tag{
+    font-family:var(--mono); font-size:11.5px; color:var(--text-dim);
+    border:1px solid var(--line); background:var(--bg-panel);
+    padding:4px 9px; border-radius:4px;
+  }
+
+  /* ---------- education ---------- */
+  .edu{font-size:14px; color:var(--text-dim);}
+  .edu b{color:var(--text);}
+
+  /* ---------- contact / footer ---------- */
+  .contact-panel{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:10px;
+    padding:36px 32px;
+  }
+  .contact-panel h2{font-size:22px; margin-bottom:10px;}
+  .contact-panel p{color:var(--text-dim); font-size:14.5px; margin-bottom:22px; max-width:560px;}
+  .open-to{list-style:none; margin-bottom:26px;}
+  .open-to li{
+    font-family:var(--mono); font-size:13px; color:var(--text-dim);
+    padding:6px 0; display:flex; gap:10px; align-items:baseline;
+  }
+  .open-to li::before{content:"[✓]"; color:var(--cyan); font-size:11px;}
+
+  footer{padding:28px 0 44px;}
+  .foot-row{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+    font-family:var(--mono); font-size:11.5px; color:var(--text-faint);
+  }
+
+  /* reveal-on-scroll */
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;}
+  .reveal.in{opacity:1; transform:none;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">ankit<span class="dot">@</span>secops<span class="dot">:~$</span></div>
+    <nav class="topnav">
+      <a href="#about">about</a>
+      <a href="#focus">focus</a>
+      <a href="#experience">experience</a>
+      <a href="#credentials">credentials</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="term">
+      <div class="term-bar">
+        <span class="term-dot t-red"></span>
+        <span class="term-dot t-amber"></span>
+        <span class="term-dot t-green"></span>
+        <span class="term-title">session — secops@prod</span>
+      </div>
+      <div class="term-body">
+        <div class="prompt-line"><span class="p-user">ankit@secops</span>:~$ whoami<span class="p-cursor"></span></div>
+
+        <h1 class="hero-name">Ankit Panchariya</h1>
+        <div class="hero-title">Principal Security Engineer — AppSec &amp; API Security · AI/LLM Security · DevSecOps · Cloud Security</div>
+        <p class="hero-hook">I build the security infrastructure that lets fast-moving teams ship without becoming a headline.</p>
+        <p class="hero-sum">8+ years across fintech, cybersecurity, and industrial giants — securing payment APIs that move real money and shipping production LLM systems before most companies had a policy on AI. I don't just find the vulnerability; I build the pipeline that makes it structurally rare.</p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="mailto:ankit.panchariya@yahoo.com">→ email me</a>
+          <a class="btn btn-ghost" href="https://linkedin.com/in/ankit-panchariya-b002aba1" target="_blank" rel="noopener">↗ linkedin</a>
+        </div>
+
+        <div class="hero-meta">
+          <span><b>status</b> open to Principal/Staff roles &amp; advisory work</span>
+          <span><b>focus</b> AppSec · AI/LLM Security · Cloud</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag">01 // SUMMARY</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="about-body">
+      <p>I'm a full-time <strong>Principal Security Engineer</strong> working across AppSec, API Security, and AI/LLM Security — and I've spent the last 8+ years doing it at companies where a breach isn't hypothetical: fintech APIs moving real money, security products that sell defense for a living, and industrial infrastructure. I've led SOC-2 and ISO-27001 certifications from scratch, cut security incidents by 80%, and built one of the first production LLM systems with real safety and escalation controls — before most companies had written an AI security policy at all.</p>
+      <p>Email me if you're hiring for a Principal/Staff security role, or need AI security/AppSec advisory — implementation help, architecture review, or a full security assessment. I'm also available for advisory work with startups building at the edge of AI, the kind that need someone equally comfortable in the threat model and the pull request.</p>
+    </div>
+
+    <div class="callout" style="margin-top:22px;">
+      <span class="callout-tag">★ WHY IT MATTERS RIGHT NOW</span>
+      <h4>AppSec + AI Security is still a rare combination</h4>
+      <p>Most AI security hires today are either LLM researchers with no production security background, or security engineers with no hands-on LLM experience. I've shipped both — a payment-grade API security program and a production LLM compliance system with safety controls — which is exactly the gap most orgs are scrambling to fill in 2026.</p>
+    </div>
+
+    <div class="metrics" style="margin-top:32px;">
+      <div class="metric"><div class="metric-num">80%</div><div class="metric-label">reduction in security incidents (Razorpay)</div></div>
+      <div class="metric"><div class="metric-num">30→72%</div><div class="metric-label">cloud security posture improved (MPOWER)</div></div>
+      <div class="metric"><div class="metric-num">40%</div><div class="metric-label">MTTR reduction via XSOAR runbooks (PANW)</div></div>
+      <div class="metric"><div class="metric-num">100%</div><div class="metric-label">hardcoded credentials eliminated (Razorpay)</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="focus">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag">02 // HOW I CAN HELP</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="grid-cards">
+      <div class="card">
+        <span class="card-tag">APPSEC · API SECURITY</span>
+        <h3>Application & API Security</h3>
+        <p>Threat modeling, manual pen testing with Burp Suite Pro, and OWASP Top 10 remediation for high-compliance environments — payment APIs, regulated fintech, and beyond.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">AI / LLM SECURITY</span>
+        <h3>AI & LLM Security</h3>
+        <p>Red-teaming LLM systems, prompt-injection defense, and risk/safety frameworks for autonomous agents — including production Lambda-based systems with escalation controls.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">CLOUD & COMPLIANCE</span>
+        <h3>Cloud Security & Compliance</h3>
+        <p>Cloud posture management with Prowler and AWS Security Hub, CIS/NIST benchmark alignment, and end-to-end SOC-2 / ISO-27001 audit leadership.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">DEVSECOPS</span>
+        <h3>DevSecOps & CI/CD</h3>
+        <p>Shift-left security baked into the pipeline — SAST, DAST, SCA, and secrets management automation so vulnerabilities get caught before merge, not after breach.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">SECURITY OPERATIONS</span>
+        <h3>Security Operations</h3>
+        <p>SIEM/EDR/DLP pipeline design, LDAP and observability integrations, and XSOAR runbooks that turn incident response from reactive to repeatable.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">ADVISORY</span>
+        <h3>Advisory & Speaking</h3>
+        <p>Org-wide AI security training, architecture reviews, and advisory engagements for teams standing up their first AppSec or AI safety program.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag">03 // TRACK RECORD</span>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="log">
+
+      <div class="log-entry current">
+        <span class="log-dot"></span>
+        <div class="log-ts">2024-09 → <span class="live">PRESENT</span></div>
+        <div class="log-role">Principal Security Engineer</div>
+        <div class="log-org">MPOWER FINANCING <span class="loc">· Hybrid, India</span></div>
+        <p class="log-mission">Built one of the first production LLM systems with real safety controls — while most companies were still writing their AI policy.</p>
+        <ul class="log-bullets">
+          <li>Designed and operationalized a production Lambda-based LLM system for automated compliance responses with integrated safety controls</li>
+          <li>Established a risk & safety management framework for autonomous systems, defining failure modes and escalation protocols</li>
+          <li>Led SOC-2 & ISO-27001 certification, implementing security controls, policies, and audit documentation</li>
+          <li>Improved cloud security posture from 30% → 72% through DevSecOps automation and EDR/DLP deployment</li>
+          <li>Conducted penetration testing on LLM systems and delivered organization-wide AI security training</li>
+        </ul>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-dot"></span>
+        <div class="log-ts">2023-10 → 2024-09</div>
+        <div class="log-role">Lead Security Engineer — AppSec & InfraSec</div>
+        <div class="log-org">RAZORPAY <span class="loc">· Remote, India</span></div>
+        <p class="log-mission">Owned security for payment infrastructure moving real money — zero room for "we'll patch it next sprint."</p>
+        <ul class="log-bullets">
+          <li>Reduced security incidents by 80% via shift-left DevSecOps strategies and AppSec integration into CI/CD pipelines</li>
+          <li>Architected a scalable API security program covering authentication, authorization, rate limiting, and input validation for payment APIs — RBI-compliant, 99.99% availability</li>
+          <li>Led application security assessments with Burp Suite Pro across 20+ microservices, remediating critical OWASP Top 10 vulnerabilities</li>
+          <li>Automated cloud security posture management using Prowler, continuously auditing AWS against CIS benchmarks and custom controls</li>
+          <li>Integrated secrets management with automated credential rotation, eliminating hardcoded credentials in 100% of repositories</li>
+          <li>Led financial-institution audits through automated compliance workflows and API security evidence packages</li>
+        </ul>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-dot"></span>
+        <div class="log-ts">2022-07 → 2023-10</div>
+        <div class="log-role">Staff Product Security Engineer</div>
+        <div class="log-org">PALO ALTO NETWORKS <span class="loc">· Remote, India</span></div>
+        <p class="log-mission">Secured the security products themselves — the bar for "good enough" doesn't exist when you're the one selling defense.</p>
+        <ul class="log-bullets">
+          <li>Conducted application security reviews and API threat modeling for distributed security products, integrating Burp Suite and automated DAST into release pipelines</li>
+          <li>Built automated LDAP, SIEM, and EDR pipelines using BigQuery and Cloud Functions for observable security orchestration</li>
+          <li>Ran Prowler-based cloud posture assessments across AWS accounts, driving remediation to meet CIS and NIST controls</li>
+          <li>Designed modular CI/CD pipelines with embedded SAST, SCA, and secret scanning for secure-by-default deployments</li>
+          <li>Created XSOAR runbooks for incident detection and response, reducing MTTR by 40%</li>
+        </ul>
+      </div>
+
+      <div class="log-entry">
+        <span class="log-dot"></span>
+        <div class="log-ts">2017-05 → 2022-07</div>
+        <div class="log-role">Staff Infrastructure Security Architect</div>
+        <div class="log-org">GE (GENERAL ELECTRIC) <span class="loc">· On-site, India</span></div>
+        <p class="log-mission">Cut my teeth on infrastructure security at industrial scale — where a breach isn't just data, it's physical systems.</p>
+        <ul class="log-bullets">
+          <li>Led cloud security and DevSecOps initiatives across diverse industrial sectors, designing frameworks to safeguard external attack surfaces</li>
+          <li>Developed internal automation tools for compliance and data protection</li>
+          <li>Spearheaded cross-functional teams to achieve NIST 800-53 compliance across cloud environments</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="callout">
+      <span class="callout-tag">★ KEY ACHIEVEMENT — OPERATIONAL EXCELLENCE IN AI SECURITY</span>
+      <h4>Lambda-based AI compliance system</h4>
+      <p>Designed a production Lambda-based AI compliance system that dramatically improved operational safety and automation — recognized as a flagship initiative at MPOWER Financing.</p>
+    </div>
+  </div>
+</section>
+
+<section id="credentials">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag">04 // CREDENTIALS & STACK</span>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="skill-group-name" style="margin-bottom:14px;">CERTIFICATIONS</div>
+        <ul class="cert-list">
+          <li><div class="c-name">Attacking & Defending LLM Prompt Injection</div><div class="c-desc">AppSecEngineer — AI prompt injection attack strategies</div></li>
+          <li><div class="c-name">Introduction to AI and LLM Security</div><div class="c-desc">Security foundations for AI and large language models</div></li>
+          <li><div class="c-name">AWS Certified Solutions Architect – Associate</div><div class="c-desc">Distributed application design on AWS</div></li>
+          <li><div class="c-name">CompTIA Security+</div><div class="c-desc">IT security and risk management proficiency</div></li>
+        </ul>
+
+        <div class="edu" style="margin-top:22px;">
+          <div class="skill-group-name" style="margin-bottom:10px;">EDUCATION</div>
+          <b>B.Tech, Computer Science</b><br>
+          VIT University, Vellore · Jul 2013 – May 2017
+        </div>
+      </div>
+
+      <div>
+        <div class="skill-group">
+          <div class="skill-group-name">APPSEC & API SECURITY</div>
+          <div class="tags">
+            <span class="tag">Burp Suite Pro</span><span class="tag">OWASP Top 10</span><span class="tag">API Threat Modeling</span><span class="tag">DAST</span><span class="tag">SCA</span><span class="tag">Secrets Mgmt</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">CLOUD POSTURE & COMPLIANCE</div>
+          <div class="tags">
+            <span class="tag">Prowler</span><span class="tag">AWS Security Hub</span><span class="tag">CIS Benchmarks</span><span class="tag">SOC-2</span><span class="tag">ISO 27001</span><span class="tag">NIST 800-53</span><span class="tag">RBI</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">CLOUD & INFRASTRUCTURE</div>
+          <div class="tags">
+            <span class="tag">AWS Lambda</span><span class="tag">BigQuery</span><span class="tag">GCP</span><span class="tag">Azure</span><span class="tag">Kubernetes</span><span class="tag">Docker</span><span class="tag">Terraform</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">SECURITY OPERATIONS</div>
+          <div class="tags">
+            <span class="tag">EDR</span><span class="tag">DLP</span><span class="tag">SIEM</span><span class="tag">LDAP</span><span class="tag">Falcon</span><span class="tag">Splunk</span><span class="tag">Datadog</span><span class="tag">Sonar</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">PROGRAMMING</div>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Rust</span><span class="tag">Go</span><span class="tag">Boto3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none;">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-tag">05 // OPEN CHANNEL</span>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="contact-panel">
+      <h2>Let's talk.</h2>
+      <p>Whether you're hiring for a Principal/Staff security role, need an AI security or AppSec advisory engagement, or want a speaker on LLM security for your team — I'm reachable directly.</p>
+
+      <ul class="open-to">
+        <li>Principal / Staff Security Engineer roles</li>
+        <li>AI/LLM security & AppSec advisory engagements</li>
+        <li>Speaking & internal training on AI/LLM security</li>
+      </ul>
+
+      <div class="cta-row" style="margin-top:0;">
+        <a class="btn btn-primary" href="mailto:ankit.panchariya@yahoo.com">→ ankit.panchariya@yahoo.com</a>
+        <a class="btn btn-ghost" href="https://linkedin.com/in/ankit-panchariya-b002aba1" target="_blank" rel="noopener">↗ linkedin.com/in/ankit-panchariya-b002aba1</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span>© 2026 Ankit Panchariya</span>
+      <span>last audit: <span class="mono">2026-07-11</span> · status: <span style="color:var(--cyan);">ALL SYSTEMS SECURE</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // reveal-on-scroll
+  const els = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.08});
+    els.forEach(el=>io.observe(el));
+  } else {
+    els.forEach(el=>el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
